@@ -1,40 +1,42 @@
 class Api::ProductsController < ApplicationController
 
-  def all_products
-    @products = Product.all
-    render "all_products.json.jb"
+  def index
+    @product = Product.all
+    render 'index.json.jb'
   end
 
-  def budget_products
-    budget_picks = []
-    index = 0
-
-    while index < Product.all.length
-      if Product.all[index].price < 110
-        budget_picks << Product.all[index]
-      end
-      index += 1
-    end
-
-    @budget_products = budget_picks
-
-    render "budget_products.json.jb"
+  def create
+    @product = Product.new(
+                name: params[:name],
+                price: params[:price],
+                image_url: params[:image_url],
+                description: params[:description]
+                )
+    @product.save
+    render 'show.json.jb'
   end
 
-  def high_end_products
-    high_end_picks = []
-    index = 0
+  def show
+    @product = Product.find(params[:id])
+    render 'show.json.jb'
+  end
 
-    while index < Product.all.length
-      if Product.all[index].price > 110
-        high_end_picks << Product.all[index]
-      end
-      index += 1
-    end
+  def update
+    @product = Product.find(params[:id])
 
-    @high_end_products = high_end_picks
+    @product.name = params[:name] || @product.name
+    @product.price = params[:price] || @product.price
+    @product.image_url = params[:image_url] || @product.image_url
+    @product.description = params[:description] || @product.description
 
-    render "high_end_products.json.jb"
+    @product.save
+    render 'show.json.jb'
+  end
+
+  def destroy
+    product = Product.find(params[:id])
+    product.destroy
+    render json: {message: "IT GONE"}
   end
 
 end
