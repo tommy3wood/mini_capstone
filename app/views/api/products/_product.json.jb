@@ -1,0 +1,15 @@
+{
+  id: product.id,
+  name: product.name,
+  price: product.price,
+  image_url: product.image_url,
+  description: product.description,
+  discount: product.is_discounted?,
+  tax: product.tax,
+  total_price: product.total_price,
+  formatted: {
+               price: number_to_currency(product.price),
+               tax: number_to_currency(product.tax),
+               total_price: number_to_currency(product.total_price)
+              }
+}

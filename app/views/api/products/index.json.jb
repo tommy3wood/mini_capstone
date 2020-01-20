@@ -1,9 +1,3 @@
-@product.map do |shoe|
-  {
-    id: shoe.id,
-    name: shoe.name,
-    price: shoe.price,
-    image_url: shoe.image_url,
-    description: shoe.description
-  }
+@products.map do |product|
+  render partial: 'product.json.jb', locals: {product: product}
 end
