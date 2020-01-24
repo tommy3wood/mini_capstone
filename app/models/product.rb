@@ -1,4 +1,9 @@
 class Product < ApplicationRecord
+  # def supplier
+  #   Supplier.find_by(id: supplier_id)
+  # end
+  belongs_to :supplier
+
   validates :name, presence: true
   validates :name, uniqueness: true
   validates :name, length: {maximum: 255}
