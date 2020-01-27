@@ -28,10 +28,11 @@ class Api::ProductsController < ApplicationController
 
   def create
     @product = Product.new(
-                name: params[:name],
-                price: params[:price],
-                description: params[:description]
-                )
+                            name: params[:name],
+                            price: params[:price],
+                            description: params[:description],
+                            supplier_id: params[:supplier_id]
+                            )
     if @product.save
       render 'show.json.jb'
     else
@@ -49,7 +50,6 @@ class Api::ProductsController < ApplicationController
 
     @product.name = params[:name] || @product.name
     @product.price = params[:price] || @product.price
-    # @product.image_url = params[:image_url] || @product.image_url
     @product.description = params[:description] || @product.description
 
     if @product.save

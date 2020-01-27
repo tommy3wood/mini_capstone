@@ -32,7 +32,7 @@ class Api::SuppliersController < ApplicationController
                 email: params[:email],
                 phone_number: params[:phone_number]
                 )
-    if @product.save
+    if @supplier.save
       render 'show.json.jb'
     else
       render json: {errors: @product.errors.full_messages}, status: :unprocessable_entity
