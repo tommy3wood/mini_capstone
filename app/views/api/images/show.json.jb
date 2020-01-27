@@ -1,0 +1,1 @@
+render partial: "images.json.jb", locals:{image: @image}
