@@ -1,9 +1,8 @@
 class Product < ApplicationRecord
-  # def supplier
-  #   Supplier.find_by(id: supplier_id)
-  # end
+
   belongs_to :supplier
   has_many :images
+  has_many :orders
 
   validates :name, presence: true
   validates :name, uniqueness: true
