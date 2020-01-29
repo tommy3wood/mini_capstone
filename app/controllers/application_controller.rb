@@ -21,4 +21,16 @@ class ApplicationController < ActionController::Base
 
   helper_method :current_user
 
+  def authenticate_user
+    unless current_user
+      render json: {Gandalf: "A fake username will not avail you! You shall not pass!"}, status: :unauthorized
+    end
+  end
+
+  def authenticate_admin
+    unless current_user && current_user.admin
+      render json: {ERROR: "You aren't supposed to be here. Cool guys only."}, status: :unauthorized
+    end
+  end
+
 end

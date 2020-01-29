@@ -1,4 +1,5 @@
 class Api::ProductsController < ApplicationController
+  before_action :authenticate_admin, only: [:create, :update, :destroy]
 
   def index
     search_term = params[:search]
@@ -41,16 +42,8 @@ class Api::ProductsController < ApplicationController
   end
 
   def show
-      puts "=" * 30
-      p current_user
-      puts "=" * 30
-
-    if current_user
-      @product = Product.find(params[:id])
-      render 'show.json.jb'
-    else
-      render json: {}
-    end
+    @product = Product.find(params[:id])
+    render 'show.json.jb'
   end
 
   def update

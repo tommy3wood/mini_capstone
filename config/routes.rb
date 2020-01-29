@@ -2,6 +2,10 @@ Rails.application.routes.draw do
   namespace :api do
    post '/users' => 'users#create'
 
+   get '/orders' => 'orders#index'
+   post '/orders' => 'orders#create'
+   get '/orders/:id' => 'orders#show'
+
    post '/sessions' => 'sessions#create'
 
    get '/products' => 'products#index'

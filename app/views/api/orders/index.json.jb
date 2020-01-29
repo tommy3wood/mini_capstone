@@ -1,0 +1,3 @@
+@orders.map do |order|
+  render partial: 'orders.json.jb', locals:{order: order}
+end
