@@ -4,6 +4,9 @@ class Product < ApplicationRecord
   has_many :images
   has_many :orders
 
+  has_many :product_categories
+  has_many :categories, through: :product_categories
+
   validates :name, presence: true
   validates :name, uniqueness: true
   validates :name, length: {maximum: 255}
@@ -24,5 +27,13 @@ class Product < ApplicationRecord
   def total_price
     tax + price
   end
+
+  # def categories
+  #   collection = []
+  #   product_categories.each do |handshake|
+  #     collection << handshake.category
+  #   end
+  #   collection
+  # end ======> has_many :categories, through: :product_categories
 
 end

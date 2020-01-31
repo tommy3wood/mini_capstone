@@ -6,11 +6,11 @@
   images: product.images,
   description: product.description,
   discount: product.is_discounted?,
+  categories: product.categories.map { |category| category.name },
   tax: product.tax,
   total_price: product.total_price,
   stock: product.stock,
   supplier: product.supplier.name,
-  # supplier: ( render partial: "api/suppliers/supplier.json.jb", locals: { supplier: product.supplier } ),
   formatted: {
                price: number_to_currency(product.price),
                tax: number_to_currency(product.tax),
