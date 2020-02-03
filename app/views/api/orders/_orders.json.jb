@@ -1,12 +1,11 @@
 {
   id: order.id,
-  user_id: order.user_id,
-  product_id: order.product_id,
+  order: ( render partial: "api/cartedProduct.json.jb", locals: {order: order.cartedProduct}),
   product: (render partial: "api/products/product.json.jb", locals: {product: order.product}),
-  quantity: order.quantity,
+ 
   subtotal: order.subtotal,
-  tax: order.tax,
-  total: order.calculate_total,
-  price: order.product.price,
+  # tax: order.tax,
+  # total: order.calculate_total,
+  # price: order.product.price,
   message: "Thanks for ordering!"
 }

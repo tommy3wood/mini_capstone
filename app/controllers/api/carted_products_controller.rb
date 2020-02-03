@@ -4,7 +4,7 @@ class Api::CartedProductsController < ApplicationController
     if current_user
       @carted_products = CartedProduct.all
       @carted_products = @carted_products.where("status = ?", "carted")
-      ender 'index.json.jb'
+      render 'index.json.jb'
     else
       render json: {message: "You're not supposed to be here"}
     end
