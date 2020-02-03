@@ -25,5 +25,8 @@ Rails.application.routes.draw do
    get '/images/:id' => 'images#show'
    patch '/images/:id' => 'images#update'
    delete '/images/:id' => 'images#destroy'
+
+   get '/carted_products' => 'carted_products#index'
+   post '/carted_products' => 'carted_products#create'
   end
 end

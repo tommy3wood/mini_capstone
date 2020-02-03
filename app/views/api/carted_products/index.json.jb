@@ -1,0 +1,3 @@
+@carted_products.map do |cart|
+  render partial: 'cartedProduct.json.jb', locals:{carted_product: cart}
+end

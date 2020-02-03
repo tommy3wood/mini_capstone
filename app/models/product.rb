@@ -7,6 +7,11 @@ class Product < ApplicationRecord
   has_many :product_categories
   has_many :categories, through: :product_categories
 
+  has_many :carted_products
+  has_many :users, through: :carted_products
+
+
+
   validates :name, presence: true
   validates :name, uniqueness: true
   validates :name, length: {maximum: 255}
