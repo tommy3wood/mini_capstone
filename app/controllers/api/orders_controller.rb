@@ -8,12 +8,13 @@ class Api::OrdersController < ApplicationController
 
   def create
     @order = Order.new(
-                        user_id: current_user.id,
+                        user_id: current_user.id
                         )
-    @order.calculate_subtotal
-    # @order.calculate_totals
-    @order.save
-    render 'show.json.jb'
+    if @order.save
+      render 'show.json.jb'
+     else
+      render json: {errors: @contact.errors.full_messages}, status: :unprocessable_entity
+    end
   end
 
   def show
